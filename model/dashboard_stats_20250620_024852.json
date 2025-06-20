@@ -1,0 +1,68 @@
+{
+  "basic_stats": {
+    "total_products": "100",
+    "total_stock": 4892,
+    "total_value": 225858.01999999996,
+    "total_discounted_value": 217438.46999999997,
+    "potential_savings": 8419.549999999988
+  },
+  "discount_stats": {
+    "total_discounted_items": "16",
+    "average_discount": 0.033,
+    "max_discount": 0.4,
+    "discount_percentage": "16.0"
+  },
+  "urgency_stats": {
+    "average_urgency": 0.092,
+    "critical_count": "2",
+    "urgent_count": "5",
+    "soon_expiry_count": "10"
+  },
+  "stock_stats": {
+    "zero_stock": "2",
+    "low_stock": "20",
+    "medium_stock": "30",
+    "high_stock": "50"
+  },
+  "category_stats": {
+    "category_counts": {
+      "Health": 13,
+      "Oral Care": 12,
+      "Vitamins": 11,
+      "First Aid": 11,
+      "Supplements": 10,
+      "Haircare": 10,
+      "Baby Care": 9,
+      "Skincare": 9,
+      "Beauty": 8,
+      "Personal Care": 7
+    },
+    "category_values": {
+      "First Aid": 34508.15,
+      "Oral Care": 31286.54,
+      "Supplements": 26034.149999999998,
+      "Skincare": 24879.92,
+      "Health": 24773.129999999997,
+      "Baby Care": 18876.410000000003,
+      "Vitamins": 18153.43,
+      "Beauty": 17952.989999999998,
+      "Haircare": 16113.34,
+      "Personal Care": 13279.96
+    }
+  },
+  "price_stats": {
+    "min_price": 5.09,
+    "max_price": 99.97,
+    "avg_price": 49.2363,
+    "median_price": 47.38
+  },
+  "expiry_analysis": {
+    "expired": "0",
+    "critical_1_3_days": "2",
+    "urgent_4_7_days": "3",
+    "soon_8_14_days": "5",
+    "normal_15_plus_days": "90"
+  },
+  "top_value_products": "                        name     category  total_value\n52              Cleanser Pro     Skincare      8056.62\n90       Pre-workout Classic  Supplements      7420.80\n8             Bandages Ultra    First Aid      7394.82\n69          Diapers Advanced    Baby Care      7199.40\n70  Allergy Medicine Premium    First Aid      6936.87",
+  "most_urgent_products": "                        name     category  days_to_expiry  urgency_score\n14            Face Cream Pro     Skincare               3       0.900000\n64         Mouthwash Premium    Oral Care               3       0.900000\n12  Whitening Strips Classic    Oral Care               5       0.833333\n66           Mouthwash Ultra    Oral Care               6       0.800000\n90       Pre-workout Classic  Supplements               7       0.766667"
+}

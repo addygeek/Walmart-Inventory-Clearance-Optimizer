@@ -1,0 +1,68 @@
+{
+  "basic_stats": {
+    "total_products": "100",
+    "total_stock": 5165,
+    "total_value": 277561.57000000007,
+    "total_discounted_value": 272746.8300000001,
+    "potential_savings": 4814.739999999991
+  },
+  "discount_stats": {
+    "total_discounted_items": "12",
+    "average_discount": 0.023,
+    "max_discount": 0.4,
+    "discount_percentage": "12.0"
+  },
+  "urgency_stats": {
+    "average_urgency": 0.05133333333333335,
+    "critical_count": "2",
+    "urgent_count": "4",
+    "soon_expiry_count": "5"
+  },
+  "stock_stats": {
+    "zero_stock": "2",
+    "low_stock": "8",
+    "medium_stock": "42",
+    "high_stock": "50"
+  },
+  "category_stats": {
+    "category_counts": {
+      "Haircare": 16,
+      "Skincare": 13,
+      "Supplements": 13,
+      "Health": 9,
+      "Oral Care": 9,
+      "Personal Care": 9,
+      "First Aid": 8,
+      "Vitamins": 8,
+      "Beauty": 8,
+      "Baby Care": 7
+    },
+    "category_values": {
+      "Haircare": 57285.09,
+      "Supplements": 44293.98,
+      "Oral Care": 31058.309999999998,
+      "Vitamins": 28546.16,
+      "Beauty": 28423.14,
+      "Skincare": 25988.989999999998,
+      "Health": 21495.87,
+      "First Aid": 16442.989999999998,
+      "Personal Care": 13609.77,
+      "Baby Care": 10417.27
+    }
+  },
+  "price_stats": {
+    "min_price": 5.01,
+    "max_price": 99.85,
+    "avg_price": 53.8045,
+    "median_price": 52.875
+  },
+  "expiry_analysis": {
+    "expired": "0",
+    "critical_1_3_days": "2",
+    "urgent_4_7_days": "2",
+    "soon_8_14_days": "1",
+    "normal_15_plus_days": "95"
+  },
+  "top_value_products": "                   name   category  total_value\n41  Hair Spray Advanced   Haircare      8978.00\n69   Toothpaste Premium  Oral Care      8508.84\n59      Hair Mask Ultra   Haircare      8492.00\n13   Hair Spray Premium   Haircare      8299.00\n10          Calcium Pro   Vitamins      7178.74",
+  "most_urgent_products": "                        name     category  days_to_expiry  urgency_score\n76  Anti-aging Serum Premium     Skincare               1       0.966667\n49           Pre-workout Pro  Supplements               2       0.933333\n43        Face Cream Premium     Skincare               4       0.866667\n58           Conditioner Pro     Haircare               5       0.833333\n55     Fever Reducer Premium    First Aid               9       0.700000"
+}
