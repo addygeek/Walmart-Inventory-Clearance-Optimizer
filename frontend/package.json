@@ -2,7 +2,7 @@
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
-  "author": "Aditya and Lincy",
+  "author": "Aditya and Lincy ",
   
   "scripts": {
     "dev": "vite",
