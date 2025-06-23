@@ -15,32 +15,26 @@ const BulkActions = ({ selectedCount, onBulkAction, userRole }) => {
       </span>
       
       <div className="flex space-x-1">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => onBulkAction('added')}
           className="p-2 text-blue-600 hover:bg-blue-100 rounded-md transition-colors"
           title="Add all to cart"
         >
           <ShoppingCart className="h-4 w-4" />
-        </button>
+        </motion.button>
         
         {userRole === 'manager' && (
-          <>
-            <button
-              onClick={() => onBulkAction('bought')}
-              className="p-2 text-green-600 hover:bg-green-100 rounded-md transition-colors"
-              title="Mark all as sold"
-            >
-              <Tag className="h-4 w-4" />
-            </button>
-            
-            <button
-              onClick={() => onBulkAction('archived')}
-              className="p-2 text-orange-600 hover:bg-orange-100 rounded-md transition-colors"
-              title="Archive all"
-            >
-              <Archive className="h-4 w-4" />
-            </button>
-          </>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => onBulkAction('bought')}
+            className="p-2 text-green-600 hover:bg-green-100 rounded-md transition-colors"
+            title="Mark all as sold"
+          >
+            <Tag className="h-4 w-4" />
+          </motion.button>
         )}
       </div>
     </motion.div>

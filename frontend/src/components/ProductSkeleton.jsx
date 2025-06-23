@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductSkeleton = ({ viewMode }) => {
   const skeletonCards = Array.from({ length: 12 }, (_, i) => (
-    <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 animate-pulse">
+    <div key={i} className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 animate-pulse h-96">
       <div className="flex items-center space-x-3 mb-4">
         <div className="h-4 w-4 bg-gray-300 rounded"></div>
         <div className="w-12 h-12 bg-gray-300 rounded-lg"></div>
