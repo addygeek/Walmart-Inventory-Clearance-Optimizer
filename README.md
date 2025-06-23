@@ -1,5 +1,4 @@
 
-```markdown
 # 🛒 Walmart Clearance Optimizer
 
 A smart inventory dashboard to help retailers like Walmart track product expiry, stock levels, and clearance priorities using visual urgency scores, analytics, and role-based access control.
@@ -65,7 +64,7 @@ Retailers often face challenges in managing perishable inventory. Products neari
 ## 📁 Folder Structure
 
 
-
+```
 walmart-clearance-optimizer/
 ├── backend/
 │   ├── models/
@@ -79,7 +78,7 @@ walmart-clearance-optimizer/
 │   │   └── App.jsx
 ├── README.md
 ├── .gitignore
-
+```
 
 
 ---
