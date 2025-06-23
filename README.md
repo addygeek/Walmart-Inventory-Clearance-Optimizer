@@ -116,13 +116,6 @@ npm run dev
 
 ---
 
-## 📽️ Demo Link
-
-📺 Watch the demo here: [https://youtu.be/your-demo-link](https://youtu.be/your-demo-link)
-*(Upload an unlisted video to YouTube as required)*
-
----
-
 ## 🧠 Future Scope
 
 * AI-based dynamic discounting
