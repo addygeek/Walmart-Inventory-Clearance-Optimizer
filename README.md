@@ -14,10 +14,10 @@
 
 ## 🖼️ Screenshots Preview
 
-<img src="/public/screenshots/dashboard.png" width="100%" />
-<img src="/public/screenshots/product_list.png" width="100%" />
-<img src="/public/screenshots/urgency_chart.png" width="100%" />
-<img src="/public/screenshots/roles_login.png" width="100%" />
+<img src="/public/screenshots/login.png" width="100%" />
+<img src="/public/screenshots/homepng" width="100%" />
+<img src="/public/screenshots/productsol.png" width="100%" />
+
 
 > 📂 All screenshots are located in the `public/screenshots/` folder.
 
