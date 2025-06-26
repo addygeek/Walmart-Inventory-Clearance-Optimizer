@@ -119,12 +119,13 @@ cd backend
 pip install -r requirements.txt
 python app.py
 💻 Frontend (React + Tailwind)
-bash
-Copy
-Edit
+
 cd frontend
 npm install
 npm run dev
+
+```
+
 🧠 Future Scope
 🤖 AI-based markdown recommendation
 
@@ -142,9 +143,6 @@ Special thanks to Walmart and the hackathon organizers for providing this opport
 
 💡 Made with ❤️ by Lincy & Addy (Aditya Kumar)
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -153,5 +151,5 @@ Would you like:
 - A `live demo` badge to show status?
 - Add a `Deploy to PythonAnywhere` or `Render` button?
 - A `README.gif` walkthrough animation instead of screenshots?
-
+```
 Let me know and I’ll help instantly!
