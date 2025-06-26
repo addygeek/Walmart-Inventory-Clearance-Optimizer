@@ -1,152 +1,157 @@
-
 # 🛒 Walmart Clearance Optimizer
 
-A smart inventory dashboard to help retailers like Walmart track product expiry, stock levels, and clearance priorities using visual urgency scores, analytics, and role-based access control.
+> 📦 An AI-powered inventory intelligence dashboard for retail chains like **Walmart** to track, analyze, and optimize clearance strategies by monitoring expiry, urgency, and stock health.
+
+---
+
+## 📽️ Watch Demo
+
+[![Watch the demo](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/YOUR_YOUTUBE_VIDEO_ID_HERE)
+
+> ⏯️ Click to watch a live walkthrough of the platform.
+
+---
+
+## 🖼️ Screenshots Preview
+
+<img src="/public/screenshots/dashboard.png" width="100%" />
+<img src="/public/screenshots/product_list.png" width="100%" />
+<img src="/public/screenshots/urgency_chart.png" width="100%" />
+<img src="/public/screenshots/roles_login.png" width="100%" />
+
+> 📂 All screenshots are located in the `public/screenshots/` folder.
 
 ---
 
 ## 📌 Problem Statement
 
-Retailers often face challenges in managing perishable inventory. Products nearing their expiry date may go unnoticed, leading to **stock wastage**, **revenue loss**, and **missed clearance opportunities**. Manual tracking in large-scale operations is inefficient and prone to errors.
+Large-scale retailers often struggle to manage **perishable inventory**, leading to:
+- 🗑️ Product wastage
+- 💸 Revenue loss
+- 🤯 Missed clearance opportunities
+
+Manual methods are inefficient and error-prone, especially at scale.
 
 ---
 
 ## ✅ Solution
 
-**Walmart Clearance Optimizer** is a full-stack inventory monitoring system that:
-
-- Detects **urgent**, **expiring soon**, and **low-stock** items.
-- Provides a **dashboard** to monitor stock analytics.
-- Allows **CSV download**, **smart filtering**, and **sorting**.
-- Supports **Admin**, **Manager**, and **Staff** login roles with different capabilities.
-- Visualizes data with **bar charts** and **urgency levels**.
-- Makes use of **manufacture and expiry dates** to calculate urgency.
-
----
-
-## 🧑‍🤝‍🧑 Team Members
-
-| Name              | Role                             |
-|-------------------|----------------------------------|
-| **Lincy Bainiwal** | Frontend Developer              |
-| **Addy**           | Backend Developer               |
+**Walmart Clearance Optimizer** solves this by offering:
+- 🎯 Real-time **product tracking** based on expiry & stock
+- 📊 **Visual dashboards** for urgency & category analysis
+- 🔐 **Role-based access** (Admin, Manager, Staff)
+- 📥 CSV downloads and advanced filters
+- 💡 Smart recommendations (coming soon!)
 
 ---
 
 ## 🚀 Features
 
-- 📋 Add, edit, delete product entries
-- 📅 Handles expiry and manufacture dates
-- 📉 Highlights products that are:
-  - Expired
+- ✅ Add / edit / delete product entries
+- 🕒 Expiry & manufacture date tracking
+- 🧯 Detects:
+  - Expired items
   - Expiring soon
-  - Low on stock
+  - Low-stock alerts
 - 📊 Dashboard with:
-  - Total stock value
-  - Expiry statistics
-  - Category-wise analytics
-- 🔐 Role-based login (Admin, Manager, Staff)
-- 📥 Download CSV of all products
+  - Total inventory value
+  - Category-wise breakdown
+  - Expiry insights
+- 🔐 Login with 3 roles (RBAC)
+- 📎 Export product list to CSV
 
 ---
 
 ## ⚙️ Tech Stack
 
-| Layer      | Technology                     |
-|------------|---------------------------------|
-| Frontend   | React.js, Tailwind CSS, Recharts |
-| Backend    | Python Flask (Addy’s part)       |
-| Database   | MongoDB Atlas                    |
-| Auth/API   | JWT, REST APIs, Axios            |
+| Layer      | Technology                        |
+|------------|------------------------------------|
+| Frontend   | React.js, Tailwind CSS, Recharts   |
+| Backend    | Python Flask, JWT, REST APIs       |
+| Database   | MongoDB Atlas                      |
+| Dev Tools  | Vite, Postman, GitHub, dotenv      |
 
 ---
 
-## 📁 Folder Structure
+## 🧑‍🤝‍🧑 Team Members
 
+| Name           | Role                 |
+|----------------|----------------------|
+| **Lincy B.**   | Frontend Developer   |
+| **Aditya (Addy)** | Backend Developer |
+
+---
+
+## 📁 Project Structure
 
 ```
 walmart-clearance-optimizer/
 ├── backend/
-│   ├── models/
-│   ├── routes/
-│   ├── app.py
-│   └── .env
+│ ├── models/
+│ ├── routes/
+│ ├── app.py
+│ └── .env
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── assets/
-│   │   └── App.jsx
+│ ├── src/
+│ │ ├── components/
+│ │ └── App.jsx
+│ └── public/
+│ └── screenshots/
 ├── README.md
-├── .gitignore
+└── .gitignore
 ```
-
 
 ---
 
 ## 🔑 Environment Variables
 
-Create a `.env` file in the `backend/` directory:
+Create a `.env` file in the `model/` directory:
 
-```
-
-MONGO\_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/walmartDB
-JWT\_SECRET=your\_jwt\_secret\_key
-
-````
-
----
-
-## 🛠️ How to Run Locally
-
-### Backend (Flask)
-
-```bash
+```env
+MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/walmartDB
+JWT_SECRET=your_jwt_secret_key
+🛠️ How to Run Locally
+▶️ Backend (Flask API)
+bash
+Copy
+Edit
 cd backend
 pip install -r requirements.txt
 python app.py
-````
-
-### Frontend (React)
-
-```bash
+💻 Frontend (React + Tailwind)
+bash
+Copy
+Edit
 cd frontend
 npm install
 npm run dev
-```
+🧠 Future Scope
+🤖 AI-based markdown recommendation
+
+📧 Email alerts for urgent stock
+
+🛒 Customer-side product suggestions
+
+📈 ML-powered sales forecasting
+
+📃 License
+This project is licensed under the MIT License.
+
+🙏 Acknowledgements
+Special thanks to Walmart and the hackathon organizers for providing this opportunity. Our solution contributes toward reducing retail waste and maximizing clearance efficiency.
+
+💡 Made with ❤️ by Lincy & Addy (Aditya Kumar)
+
+yaml
+Copy
+Edit
 
 ---
 
-## 🧠 Future Scope
+### ✅ What's Next?
+Would you like:
+- A `live demo` badge to show status?
+- Add a `Deploy to PythonAnywhere` or `Render` button?
+- A `README.gif` walkthrough animation instead of screenshots?
 
-* AI-based dynamic discounting
-* Automated email alerts for urgent stock
-* Role-based product access
-* Sales forecasting with ML
-
----
-
-## 📃 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## 🙏 Acknowledgements
-
-We thank Walmart and the hackathon organizers for the opportunity to build a socially impactful project. Our tool helps reduce waste and improve clearance strategy.
-
----
-
-> Built  by Lincy and Addy
-
-```
-
----
-
-Let me know if you'd like:
-- `.env.example`
-- Flask `app.py` boilerplate
-- A GitHub badge section  
-I'll be happy to help!
-```
-
+Let me know and I’ll help instantly!
