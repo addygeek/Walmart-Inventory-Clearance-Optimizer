@@ -208,6 +208,7 @@ const ProductCard = ({
               whileHover={!isOutOfStock ? { scale: 1.02 } : {}}
               whileTap={!isOutOfStock ? { scale: 0.98 } : {}}
               onClick={() => !isOutOfStock && onAction(product.productId, 'bought')}
+              
               disabled={isOutOfStock}
               className={`w-full py-2 px-4 text-sm font-medium rounded-md ${
                 isOutOfStock ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700 shadow hover:shadow-lg'

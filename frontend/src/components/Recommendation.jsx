@@ -50,24 +50,39 @@ const RecommendationDashboard = ({ userId, userRole }) => {
     }
   };
 
-  const handleInteraction = async (productId, actionType) => {
-    try {
-      await axios.post(`${API_BASE_URL}/interaction`, {
-        userId,
-        productId,
-        actionType
-      });
-      
-      // Refresh recommendations after interaction
-      setTimeout(() => {
-        fetchRecommendations();
-        fetchClearanceRecommendations();
-        fetchUserPreferences();
-      }, 500);
-    } catch (error) {
-      console.error('Error recording interaction:', error);
+ const handleInteraction = async (productId, actionType) => {
+  try {
+    const payload = {
+      userId,
+      productId,
+      actionType,
+      timestamp: new Date().toISOString(),
+      session_id: `session_${Date.now()}`,
+      metadata: {
+        source: 'web_app',
+        device: 'desktop',
+      },
+    };
+
+    if (actionType === 'bought') {
+      payload.quantity = 1;
     }
-  };
+
+    console.log('➡️ Sending interaction:', payload);
+
+    await axios.post(`${API_BASE_URL}/interactions`, payload);
+
+    // Refresh data after action
+    fetchRecommendations();
+    fetchClearanceRecommendations();
+    fetchUserPreferences();
+
+  } catch (error) {
+    console.error('❌ Interaction error:', error.response?.data || error.message);
+    alert(error.response?.data?.error || 'Interaction failed');
+  }
+};
+
 
   const evaluateSystem = async () => {
     setLoading(true);

@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 import ApiService from '../services/api';
 
 // Handles individual product action like "bought"
+
 export const handleProductAction = async ({
     productId,
     actionType,
@@ -17,7 +18,8 @@ export const handleProductAction = async ({
             toast.loading('Processing sale...', { id: `sale-${productId}` });
         }
 
-        const response = await ApiService.addInteraction({
+        // 👇 Prepare payload
+        const interactionPayload = {
             userId,
             productId,
             actionType,
@@ -25,7 +27,13 @@ export const handleProductAction = async ({
             timestamp: new Date().toISOString(),
             session_id: `session_${Date.now()}`,
             metadata: { source: 'web_app', device: 'desktop' },
-        });
+        };
+
+        // 👇 Debug log
+        console.log("🔍 Sending interaction payload:", interactionPayload);
+
+        // 👇 Send API request
+        const response = await ApiService.addInteraction(interactionPayload);
 
         if (actionType === 'bought') {
             toast.dismiss(`sale-${productId}`);

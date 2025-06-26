@@ -14,13 +14,8 @@ import ProductSkeleton from './components/ProductSkeleton';
 import Header from './components/Header';
 import useRecommendationsQuery from './reactquery/useRecommendationsQuery';
 import useProductsQuery from './reactquery/useProductsQuery';
-import {
-  handleProductAction,
-  handleBulkAction,
-  toggleProductSelection,
-  selectAllProducts,
-  handlePopulateDatabase,
-} from './utils/productHandlers';
+import { handleProductAction , selectAllProducts} from './utils/productHandlers'; 
+
 
 const ProductPage = ({ userId = 'staff_1', userRole = 'staff', userName = 'Staff User', onLogout }) => {
   const [viewMode, setViewMode] = useState('grid');
@@ -30,6 +25,25 @@ const ProductPage = ({ userId = 'staff_1', userRole = 'staff', userName = 'Staff
   const [databaseStatus, setDatabaseStatus] = useState(null);
   const [filters, setFilters] = useState({ categories: [], priceRange: [0, 100], expiryDays: [0, 180], stockLevel: 'all', discountOnly: false, urgentOnly: false });
   const queryClient = useQueryClient();
+
+  const handleAction = async (productId, actionType) => {
+  try {
+    await handleProductAction({
+      productId,
+      actionType,
+      userId,
+      queryClient,
+      filters,
+      searchTerm,
+      sortBy,
+    });
+    // Optional: toast.success(`${actionType} successful!`);
+  } catch (error) {
+    console.error('Error during product action:', error);
+    toast.error('Something went wrong. Please try again.');
+  }
+};
+
 
   const { data: productsResponse, isLoading, refetch } = useProductsQuery({ filters, searchTerm, sortBy });
   const { data: recommendations = [] } = useRecommendationsQuery(userId);
@@ -180,7 +194,16 @@ const ProductPage = ({ userId = 'staff_1', userRole = 'staff', userName = 'Staff
                 <motion.div key={viewMode} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className={`grid gap-6 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5' : 'grid-cols-1'}`}>
                   {filteredProducts.map((product, index) => (
                     <motion.div key={product.productId} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.05 }}>
-                      <ProductCard product={product} isSelected={selectedProducts.has(product.productId)} onSelect={toggleProductSelection} onAction={handleProductAction} onClick={() => {}} userRole={userRole} />
+                      {/* <ProductCard product={product} isSelected={selectedProducts.has(product.productId)} onSelect={toggleProductSelection} onAction={handleProductAction} onClick={() => {}} userRole={userRole} /> */}
+                      <ProductCard
+  key={product.productId}
+  product={product}
+  isSelected={selectedProducts.has(product.productId)}
+  onSelect={(id) => toggleProductSelection(id, selectedProducts, setSelectedProducts)}
+  onClick={() => {}}
+  onAction={handleAction} 
+  userRole={userRole}
+/>
                     </motion.div>
                   ))}
                 </motion.div>
