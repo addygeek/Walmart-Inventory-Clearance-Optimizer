@@ -13,7 +13,7 @@ import jwt
 from functools import wraps
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React frontend
+CORS(app, origins=["https://inventory.darexai.com"])
 
 # Configuration
 app.config['SECRET_KEY'] = 'your-secret-key-here'  # Change this in production

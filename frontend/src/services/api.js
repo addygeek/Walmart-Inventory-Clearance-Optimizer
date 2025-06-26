@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://addywalmart.pythonanywhere.com/api';
 
 class ApiService {
   constructor() {
@@ -25,22 +25,40 @@ class ApiService {
 
   async request(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`;
+
+    const method = options.method || 'GET';
     const config = {
+      method,
       headers: this.getHeaders(),
+      mode: 'cors',
+      credentials: 'include',
       ...options,
     };
 
+    // Avoid setting 'body' for GET or HEAD requests
+    if (['GET', 'HEAD'].includes(method.toUpperCase())) {
+      delete config.body;
+    }
+
     try {
       const response = await fetch(url, config);
-      
-      if (!response.ok) {
-        const error = await response.json().catch(() => ({ error: 'Network error' }));
-        throw new Error(error.error || `HTTP ${response.status}`);
+
+      if (!response || response.status === 0) {
+        throw new Error('Network error or blocked by CORS policy');
       }
 
-      return await response.json();
+      const contentType = response.headers.get('Content-Type') || '';
+      const isJSON = contentType.includes('application/json');
+      const data = isJSON ? await response.json().catch(() => null) : null;
+
+      if (!response.ok) {
+        const errorMsg = data?.error || `Request failed: ${response.status} ${response.statusText}`;
+        throw new Error(errorMsg);
+      }
+
+      return data ?? {};
     } catch (error) {
-      console.error('API Request failed:', error);
+      console.error(`❌ API error [${method} ${url}]:`, error.message);
       throw error;
     }
   }
@@ -50,17 +68,17 @@ class ApiService {
     return this.request('/health');
   }
 
-  // Auth methods (for future real authentication)
+  // Auth methods
   async login(credentials) {
     const response = await this.request('/auth/login', {
       method: 'POST',
       body: JSON.stringify(credentials),
     });
-    
+
     if (response.token) {
       this.setToken(response.token);
     }
-    
+
     return response;
   }
 
@@ -73,25 +91,18 @@ class ApiService {
 
   // Product methods
   async getProducts(params = {}) {
-    try {
-      const queryString = new URLSearchParams(params).toString();
-      const endpoint = `/products${queryString ? `?${queryString}` : ''}`;
-      const response = await this.request(endpoint);
-      
-      // Check if database is empty
-      if (response.database_empty) {
-        console.warn('⚠️ Database is empty, no real data available');
-      } else {
-        console.log('✅ Loaded real data from MongoDB:', response.message);
-      }
-      
-      return response;
-    } catch (error) {
-      console.error('Error fetching products:', error);
-      throw error;
-    }
-  }
+    const queryString = new URLSearchParams(params).toString();
+    const endpoint = `/products${queryString ? `?${queryString}` : ''}`;
+    const response = await this.request(endpoint);
 
+    if (response?.database_empty) {
+      console.warn('⚠️ Database is empty, no real data available');
+    } else {
+      console.log('✅ Loaded real data from MongoDB:', response?.message);
+    }
+
+    return response;
+  }
 
   async getProduct(productId) {
     return this.request(`/products/${productId}`);
@@ -117,30 +128,25 @@ class ApiService {
     });
   }
 
-  // Interaction methods
-async addInteraction(interactionData) {
+  // Interactions
+  async addInteraction(interactionData) {
     try {
       const response = await this.request('/interactions', {
         method: 'POST',
         body: JSON.stringify(interactionData),
       });
-      
-      // Check if the action was successful
-      if (!response.can_sell && interactionData.actionType === 'bought') {
-        throw new Error(response.error || 'Cannot complete sale - insufficient stock');
+
+      if (!response?.can_sell && interactionData.actionType === 'bought') {
+        throw new Error(response?.error || 'Cannot complete sale - insufficient stock');
       }
-      
+
       return response;
     } catch (error) {
-      // Re-throw with more specific error message
       if (error.message.includes('Insufficient stock') || error.message.includes('out of stock')) {
         throw new Error(`❌ ${error.message}`);
       }
       throw error;
     }
-  }
-  async getDatabaseStatus() {
-    return this.request('/database/status');
   }
 
   async getInteractions(params = {}) {
@@ -148,39 +154,48 @@ async addInteraction(interactionData) {
     return this.request(`/interactions?${queryString}`);
   }
 
-  // Recommendation methods
+  // Database
+  async getDatabaseStatus() {
+    return this.request('/database/status');
+  }
+
+  async populateDatabase() {
+    try {
+      const response = await this.request('/database/populate', {
+        method: 'POST',
+      });
+      console.log('✅ Database populated:', response?.message);
+      return response;
+    } catch (error) {
+      console.error('❌ Failed to populate database:', error.message);
+      throw error;
+    }
+  }
+
+  // Recommendations
   async getRecommendations(userId, params = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/recommendations/${userId}?${queryString}`);
   }
 
-  // Analytics methods
+  // Analytics
   async getDashboardAnalytics() {
     return this.request('/analytics/dashboard');
   }
-  async populateDatabase() {
-    return this.request('/database/populate', {
-      method: 'POST',
-    });
-  }
+
   // Bulk operations
   async bulkOperations(operationData) {
-    try {
-      const response = await this.request('/products/bulk', {
-        method: 'POST',
-        body: JSON.stringify(operationData),
-      });
-      
-      // Check for any stock-related errors in bulk operations
-      const stockErrors = response.results?.filter(r => r.error && r.error.includes('stock'));
-      if (stockErrors && stockErrors.length > 0) {
-        console.warn('Some items had stock issues:', stockErrors);
-      }
-      
-      return response;
-    } catch (error) {
-      throw error;
+    const response = await this.request('/products/bulk', {
+      method: 'POST',
+      body: JSON.stringify(operationData),
+    });
+
+    const stockErrors = response?.results?.filter(r => r.error && r.error.includes('stock'));
+    if (stockErrors?.length) {
+      console.warn('⚠️ Stock issues detected in bulk operation:', stockErrors);
     }
+
+    return response;
   }
 }
 
