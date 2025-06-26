@@ -6,7 +6,7 @@
 
 ## 📽️ Watch Demo
 
-[![Watch the demo](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/52S96wofr4o)
+[![Watch the demo](https://img.youtube.com/vi/52S96wofr4o/0.jpg)](https://youtu.be/52S96wofr4o)
 
 > ⏯️ Click to watch a live walkthrough of the platform.
 > Delpoyed: http://inventory.darexai.com/ 
@@ -15,8 +15,8 @@
 ## 🖼️ Screenshots Preview
 
 <img src="/public/login.png" width="100%" />
-<img src="/public/homepng" width="100%" />
-<img src="/public/productsol.png" width="100%" />
+<img src="/public/home.png" width="100%" />
+<img src="/public/productsold.png" width="100%" />
 
 
 > 📂 All screenshots are located in the `public/screenshots/` folder.
