@@ -14,9 +14,9 @@
 
 ## 🖼️ Screenshots Preview
 
-<img src="/public/screenshots/login.png" width="100%" />
-<img src="/public/screenshots/homepng" width="100%" />
-<img src="/public/screenshots/productsol.png" width="100%" />
+<img src="/public/login.png" width="100%" />
+<img src="/public/homepng" width="100%" />
+<img src="/public/productsol.png" width="100%" />
 
 
 > 📂 All screenshots are located in the `public/screenshots/` folder.
