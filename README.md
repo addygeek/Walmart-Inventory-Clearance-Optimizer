@@ -6,10 +6,10 @@
 
 ## 📽️ Watch Demo
 
-[![Watch the demo](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/YOUR_YOUTUBE_VIDEO_ID_HERE)
+[![Watch the demo](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/52S96wofr4o)
 
 > ⏯️ Click to watch a live walkthrough of the platform.
-
+> Delpoyed: http://inventory.darexai.com/ 
 ---
 
 ## 🖼️ Screenshots Preview
